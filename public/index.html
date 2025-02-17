@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main h1 {
+            color: white;
+            text-align: center;
+            padding: 1em;
+            border-bottom: solid #70eae8;
+        }
+
+        main h2 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        main h3 {
+            margin-bottom: 0.8em;
+            font-size: 1.5em;
+        }
+
+        .product-detail {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1271px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            color: white;
+        }
+
+        .product-image {
+            position: relative;
+            width: 50%;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .favorite-icon,
+        .icono-favorito {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #ff6347;
+            cursor: pointer;
+            background-color: white;
+            border: none;
+        }
+
+        .product-info {
+            width: 45%;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .product-info h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        .product-price .old-price {
+            font-size: 18px;
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        .product-rating {
+            margin: 10px 0;
+        }
+
+        .stars {
+            color: #f39c12;
+        }
+
+        .product-description {
+            font-size: 16px;
+            margin: 20px 0;
+            text-align: justify;
+            margin-top: 3em;
+            margin-bottom: 4em;
+        }
+
+        .add-to-cart {
+            background-color: #70eae8;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 30px;
+        }
+
+        .add-to-cart:hover {
+            background-color: #ada6f3;
+        }
+
+        /**/
+
+        .condicionesVenta {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* background-color: #b9b1ff; */
+            background-color: #fffab1;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+
+        .condicionesVenta img {
+            width: 2.5em;
+            margin-bottom: 1em;
+        }
+
+        /* Estilo para las miniaturas */
+        .cd-thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="icons8-cd (1).gif" alt="logo">
+            <h1>CD <span>&</span> Play</h1>
+        </div>
+
+        <div class="icons">
+            <img src="https://img.icons8.com/?size=48&id=82875&format=png" alt="buscar">
+
+            <a href="#" id="carrito-container">
+                <img alt="Carrito de compras" id="carrito-img" type="image/png" sizes="96x96" rel="icon"
+                    src="https://img.icons8.com/?size=100&id=PIkrB3sbBDNs&format=png">
+                <span id="carrito-count">0</span>
+            </a>
+            <a href="suscripcion.html">
+                <img src="https://img.icons8.com/?size=100&id=7820&format=png" alt="Usuario" title="usuario">
+            </a>
+            <a href="#">
+                <img src="https://img.icons8.com/?size=100&id=8113&format=png" alt="menu" title="menu">
+            </a>
+        </div>
+    </header>
+    <main>
+        <h1>Producto de la semana</h1>
+
+        <div class="product-detail">
+            <div class="product-image">
+                <!-- Imagen principal que cambia con el clic en las miniaturas -->
+                <img id="main-image"
+                    src="https://tienda.robe.es/cdn/shop/products/MockupCDSNLEAcopy.jpg?v=1700585621&width=713"
+                    alt="Se nos lleva el aire. Robe">
+                <button class="icono-favorito" data-entry-id="1739524592128">🤍</button>
+            </div>
+            <div class="product-info">
+                <h2>CD - ROBE</h2>
+                <h3 id="cd-title">Se nos lleva el aire</h3>
+                <div class="product-price">
+                    <p>19,99 €</p>
+                    <span class="old-price">20,00 €</span>
+                </div>
+                <div class="product-rating">
+                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> 4.0 (100 opiniones)
+                </div>
+                <div class="product-description">
+                    <p>CD de la banda extremeña de "los Robe", capitaneada por Roberto Iniesta y acompañada por los músicos 
+                        Carlitos Pérez, al violín; David Lerman, al clarinete y al bajo; Álvaro Rodríguez, al piano; Alber Fuentes, a 
+                        la batería y a las percusiones; y Lorenzo González, a los coros. A ellos se les sumó a finales de 2019 
+                        Woody Amores a la guitarra eléctrica. Discos compuestos de rock aliñado por momentos con toques psicodélicos y
+                        progresivos que, presididas por la reconocible marca creativa de Robe, no dejarán indiferente a
+                        sus seguidores.</p>
+                </div>
+
+                <!-- Miniaturas de los CDs -->
+                <div class="cd-thumbnails">
+                    <img class="thumbnail"
+                        src="https://tienda.robe.es/cdn/shop/products/MockupCDSNLEAcopy.jpg?v=1700585621&width=150"
+                        alt="Se nos lleva el aire"
+                        data-image="https://tienda.robe.es/cdn/shop/products/MockupCDSNLEAcopy.jpg?v=1700585621&width=713"
+                        data-title="Se nos lleva el aire">
+                    <img class="thumbnail" src="https://tienda.robe.es/cdn/shop/products/342.jpg?v=1667485966&width=600"
+                        alt="Mayeutica"
+                        data-image="https://tienda.robe.es/cdn/shop/products/342.jpg?v=1667485966&width=600"
+                        data-title="Mayeutica">
+                    <img class="thumbnail" src="https://tienda.robe.es/cdn/shop/products/306.jpg?v=1668283001&width=600"
+                        alt="" data-image="https://tienda.robe.es/cdn/shop/products/306.jpg?v=1668283001&width=600"
+                        data-title="Destrozares">
+                    <img class="thumbnail" src="https://tienda.robe.es/cdn/shop/products/307.jpg?v=1667485961&width=600"
+                        alt="Otro CD"
+                        data-image="https://tienda.robe.es/cdn/shop/products/307.jpg?v=1667485961&width=600"
+                        data-title="Lo que aletea en nuestras cabezas">
+                </div>
+                <button class="add-to-cart carrito-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <section class="condicionesVenta">
+            <figure>
+                <img src="https://www.lacasadeldisco.es/themes/lacasadeldisco/assets/img/modules/appagebuilder/images/Valor1.png"
+                    alt="">
+                <figcaption>Envíos a todo el mundo desde 3,99€</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.lacasadeldisco.es/themes/lacasadeldisco/assets/img/modules/appagebuilder/images/Valor2.png"
+                    alt="">
+                <figcaption>Pago seguro</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.lacasadeldisco.es/themes/lacasadeldisco/assets/img/modules/appagebuilder/images/Valor3.png"
+                    alt="">
+                <figcaption>Garantía de devolución</figcaption>
+            </figure>
+        </section>
+    </main>
+    <!-- <footer>
+        <div>
+            <h3>SOBRE NOSOTROS</h3>
+            <p>Encuentra lo último en música. En nuestra tienda online encontrarás una gran variedad de estilos
+                musicales y novedades discográficas así, como Merchan y otros muchos artículos relacionadas con la
+                música.</p>
+        </div>
+        <div>
+            <h3>CONTACTANOS</h3>
+            <p>
+        </div> -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#">CD <span>&</span> Play</a>
+            </div>
+
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" class="social-icon">
+                    <img src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png" alt="X">
+                </a>
+                <a href="#" class="social-icon">
+                    <img src="https://img.icons8.com/?size=100&id=32292&format=png" alt="Instagram">
+                </a>
+            </div>
+
+            <div class="footer-contact">
+                <p>Contáctanos:</p>
+                <p>contacto@cdplay.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 CD & Play. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.getElementById('main-image');
+        const cdTitle = document.getElementById('cd-title');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                // Cambiar la imagen grande
+                mainImage.src = thumbnail.getAttribute('data-image');
+                // Cambiar el título del CD
+                cdTitle.textContent = thumbnail.getAttribute('data-title');
+            });
+        });
+    </script>
+</body>
+
+</html>

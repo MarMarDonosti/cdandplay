@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de suscripción">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="icon" href="images/logo5.png" type="image/x-icon"> -->
+    <title>Subscripción</title>
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            /* background: linear-gradient(135deg, #ff6161, #344a5e); */
+            background-image: url('https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin-right: 0;
+            margin-left: 0;
+            padding-bottom: 2em;
+        }
+
+        header {
+            margin-bottom: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: white;
+            padding-top: 1em;
+            text-align: center;
+            font-size: 47px;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 12px 20px 10px rgba(0, 0, 0, 0.2);
+            width: 30em;
+            padding: 2.5em;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border-radius: 30px;
+        }
+
+        form button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 1.2em;
+        }
+
+        form button:hover {
+            background-color: #ed5f61;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            display: none;
+        }
+
+        /**/
+        /* .error-registrado {
+            color: red;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid red;
+            background-color: #f8d7da;
+            display: none;
+        }
+
+        #successMessage {
+            color: green;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid green;
+            background-color: #d4edda;
+            display: none;
+        } */
+        /* Estilo del modal */
+        .modal {
+            display: none;
+            /* Inicialmente oculto */
+            position: fixed;
+            z-index: 1;
+            /* Aparece por encima de otros contenidos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo oscuro */
+            overflow: auto;
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #modalMessage {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+    <!-- server.js / db.js-->
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="icons8-cd (1).gif" alt="logo"></a>
+            <a href="index.html">
+                <h1>CD <span>&</span> Play</h1>
+            </a>
+        </div>
+
+        <div class="icons">
+            <img src="https://img.icons8.com/?size=48&id=82875&format=png" alt="buscar">
+
+            <a href="#" id="carrito-container">
+                <img alt="Carrito de compras" id="carrito-img" type="image/png" sizes="96x96" rel="icon"
+                    src="https://img.icons8.com/?size=100&id=PIkrB3sbBDNs&format=png">
+                <span id="carrito-count">0</span>
+            </a>
+            <a href="suscripcion.html">
+                <img src="https://img.icons8.com/?size=100&id=7820&format=png" alt="Usuario" title="usuario">
+            </a>
+            <a href="#">
+                <img src="https://img.icons8.com/?size=100&id=8113&format=png" alt="menu" title="menu">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section aria-labelledby="subscription-form">
+            <h2 id="subscription-form">Suscríbete</h2>
+            <form> <!--action="/subscribe" method="post"-->
+                <div>
+                    <label for="name">Nombre de usuario:</label>
+                    <input type="text" id="name" name="name" required aria-required="true" aria-label="Nombre">
+                    <span id="name-error" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="age">Edad:</label>
+                    <input type="number" id="age" name="age" required aria-required="true" aria-label="Edad">
+                    <span id="age-error" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required aria-required="true"
+                        aria-label="Correo electrónico">
+                    <span id="email-error" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required aria-required="true"
+                        aria-label="Contraseña">
+                    <span id="password-error" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="confirm-password">Repite la contraseña:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required aria-required="true"
+                        aria-label="Repetir Contraseña">
+                    <span id="confirm-password-error" class="error-message"></span>
+                </div>
+                <div>
+                    <button type="submit" aria-label="Suscribirse">Suscribirse</button>
+                </div>
+            </form>
+            <!-- <div id="successMessage" style="display:none" role="alert">
+                Te has suscrito!
+            </div>
+            <div id="errorRegistrado" class="error-registrado"></div> -->
+            <!-- Modal de éxito -->
+            <div id="successModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <p id="modalMessage"></p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#">CD <span>&</span> Play</a>
+            </div>
+
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" class="social-icon">
+                    <img src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png" alt="X">
+                </a>
+                <a href="#" class="social-icon">
+                    <img src="https://img.icons8.com/?size=100&id=32292&format=png" alt="Instagram">
+                </a>
+            </div>
+
+            <div class="footer-contact">
+                <p>Contáctanos:</p>
+                <p>contacto@cdplay.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 CD & Play. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    </footer>
+    <script>
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirm-password').value.trim();
+            const age = document.getElementById('age').value.trim();
+
+            // Limpiar errores previos
+            clearErrors();
+
+            let valid = true;
+
+            // Validación de nombre (solo letras, tildes, etc.)
+            const nombreValido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑçÇäÄëËïÏöÖüÜ\s\-]+$/g;
+            if (!nombreValido.test(name)) {
+                valid = false;
+                showError('name', 'Solo se permiten letras, espacios, tildes, diéresis, guiones y ç.');
+            }
+
+            // Validación de email
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                valid = false;
+                showError('email', 'Email inválido. Por favor, ingresa un correo electrónico válido.');
+            }
+
+            // Validación de la contraseña (8-15 caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial)
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)[^\s]{8,15}$/;
+            if (!passwordRegex.test(password)) {
+                valid = false;
+                showError('password', 'La contraseña debe tener entre 8 y 15 caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.');
+            }
+
+            // Validación de repetición de contraseña
+            if (password !== confirmPassword) {
+                valid = false;
+                showError('password', 'Las contraseñas no coinciden.');
+                showError('confirm-password', 'Las contraseñas no coinciden.');
+            }
+
+            // Validación de la edad (mayor a 18 años y menor a 120 años)
+            if (!age || age < 18 || age > 120) {
+                valid = false;
+                showError('age', 'Debes ser mayor de edad.');
+            }
+
+            // Verificar si los campos están vacíos
+            if (!name || !email || !password || !confirmPassword || !age) {
+                alert('Todos los campos son obligatorios.');
+                return;
+            }
+
+            // Si hay errores, no seguimos con el proceso
+            if (!valid) {
+                return;
+            }
+
+            // Datos del usuario a enviar
+            const user = {
+                name: name,
+                age: age,
+                email: email,
+                password: password  // La contraseña se envía tal como está, será el backend quien la encripte
+            };
+
+            // Enviar la solicitud POST al backend para suscribir al usuario
+            fetch('/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Mostrar el modal con el mensaje
+                        document.getElementById('modalMessage').textContent = `Bienvenid@ ${name}, ¡ya te has suscrito!`;
+                        document.getElementById('successModal').style.display = 'block';
+
+                        // Limpiar el formulario después de enviar
+                        document.querySelector('form').reset();
+                    } else {
+                        document.getElementById('errorRegistrado').textContent = 'Error al registrarse. Intenta de nuevo.';
+                        document.getElementById('errorRegistrado').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al enviar la solicitud:', error);
+                    alert(`Error en la suscripción: ${error.message}`);
+                });
+
+            // Función para mostrar los mensajes de error debajo de los inputs
+            function showError(inputId, message) {
+                const errorElement = document.getElementById(`${inputId}-error`);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block'; // Mostrar mensaje de error
+                }
+            }
+
+
+            // Función para limpiar los errores previos
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('.error-message');
+                errorElements.forEach(element => {
+                    element.textContent = '';
+                    element.style.display = 'none'; // Ocultar el mensaje de error
+                });
+
+                const errorRegistrado = document.getElementById('errorRegistrado');
+                if (errorRegistrado) {
+                    errorRegistrado.style.display = 'none'; // Ocultar el error general
+                }
+            }
+            // Cerrar el modal al hacer clic en el botón de cerrar
+            document.querySelector('.close-button').addEventListener('click', function () {
+                document.getElementById('successModal').style.display = 'none';
+            });
+
+            // Cerrar el modal si el usuario hace clic fuera del modal
+            window.onclick = function (event) {
+                if (event.target === document.getElementById('successModal')) {
+                    document.getElementById('successModal').style.display = 'none';
+                }
+            };
+        });
+    </script>
+
+</body>
+
+</html>
