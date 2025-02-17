@@ -79,6 +79,8 @@ header {
     background-color: #b9b1ff;
     border-radius: 40px;
     padding: 0.4em;
+    padding-left: 1em;
+    padding-right: 1.2em;
 }
 #carrito-container {
     display: flex;
@@ -146,6 +148,9 @@ footer {
   
   .footer-links a:hover {
     text-decoration: underline;
+  }
+  .contSocial > p {
+    margin-bottom: 0.8em;
   }
   
   .footer-social {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Formulario de suscripción">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="icon" href="images/logo5.png" type="image/x-icon"> -->
+    <link rel="icon" href="https://img.icons8.com/?size=80&id=a4P6sjFS2tBF&format=png" type="image/x-icon">
     <title>Subscripción</title>
     <style>
         main {
@@ -35,6 +35,7 @@
             padding-top: 1em;
             text-align: center;
             font-size: 47px;
+            padding-bottom: 0.8em;
         }
 
         form {
@@ -43,15 +44,16 @@
             box-shadow: 0 12px 20px 10px rgba(0, 0, 0, 0.2);
             width: 30em;
             padding: 2.5em;
+            margin-bottom: 4em;
         }
 
         form div {
-            margin-bottom: 15px;
+            margin-bottom: 24px;
         }
 
         form label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 11px;
         }
 
         form input {
@@ -60,12 +62,16 @@
             box-sizing: border-box;
             border-radius: 30px;
         }
+        .contBtn {
+            display: flex;
+            justify-content: center;
+        }
 
         form button {
             background-color: #333;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 50px;
             cursor: pointer;
             border-radius: 20px;
             margin-top: 1.2em;
@@ -146,9 +152,9 @@
         #modalMessage {
             font-size: 18px;
             color: #333;
+            padding: 3em;
         }
     </style>
-    <!-- server.js / db.js-->
 </head>
 
 <body>
@@ -208,7 +214,7 @@
                         aria-label="Repetir Contraseña">
                     <span id="confirm-password-error" class="error-message"></span>
                 </div>
-                <div>
+                <div class="contBtn">
                     <button type="submit" aria-label="Suscribirse">Suscribirse</button>
                 </div>
             </form>
@@ -240,14 +246,19 @@
                     <li><a href="#">Ayuda</a></li>
                 </ul>
             </div>
-
-            <div class="footer-social">
-                <a href="#" class="social-icon">
-                    <img src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png" alt="X">
-                </a>
-                <a href="#" class="social-icon">
-                    <img src="https://img.icons8.com/?size=100&id=32292&format=png" alt="Instagram">
-                </a>
+            <div class="contSocial">
+                <p>Síguenos:</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">
+                        <img src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png" alt="X">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://img.icons8.com/?size=100&id=32292&format=png" alt="Instagram">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://img.icons8.com/?size=50&id=118468&format=png" alt="Facebook">
+                    </a>
+                </div>
             </div>
 
             <div class="footer-contact">
@@ -259,7 +270,6 @@
         <div class="footer-bottom">
             <p>&copy; 2025 CD & Play. Todos los derechos reservados.</p>
         </div>
-    </footer>
     </footer>
     <script>
         document.querySelector('form').addEventListener('submit', function (event) {
