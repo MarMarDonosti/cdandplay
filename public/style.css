@@ -188,3 +188,42 @@ footer {
   .footer-bottom p {
     font-size: 14px;
   }
+  
+  #backToTop {
+    background-color: #70eae8;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    
+    /* Inicialmente oculto */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+  
+  
+#backToTop a {
+    font-size: 2em;
+    text-decoration: none;
+}
+.sr-only {   /*Disponible sólo para lectores de pantalla*/
+  position: absolute; /*Coloca el elemento fuera del flujo normal del documento*/
+  width: 1px; /*Lo hace muy pequeño (prácticamente invisible)*/
+  height: 1px;
+  margin: -1px;  /*Elimina márgenes, rellenos y bordes para evitar cualquier desplazamiento.*/
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);  /* Establece el área visible en cero */
+  clip-path: inset(50%);    /* Alternativa para cortar el área:asegura que el contenido se recorte de manera uniforme. */
+  white-space: nowrap;      /* Evita que el texto se envuelva en múltiples líneas*/
+  overflow: hidden;         /* Asegura que no se muestre el contenido */
+}
